@@ -1,0 +1,61 @@
+.onboardingModal {
+  @apply bg-gray-900 rounded-lg shadow-xl overflow-hidden relative;
+  min-height: 500px;
+  width: 90%;
+  max-width: 600px;
+  transform-origin: center;
+}
+
+.actionButton {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg 
+         transform transition-all duration-300 hover:scale-105;
+  box-shadow: 0 4px 14px rgba(0, 118, 255, 0.39);
+}
+
+.actionButton:hover {
+  box-shadow: 0 6px 20px rgba(0, 118, 255, 0.23);
+}
+
+/* Step Animation Classes */
+.stepEnter {
+  animation: slideIn 0.5s ease forwards;
+}
+
+.stepExit {
+  animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .onboardingModal {
+    width: 95%;
+    min-height: 400px;
+  }
+
+  .actionButton {
+    @apply py-2 px-6;
+    font-size: 0.9rem;
+  }
+}

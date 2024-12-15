@@ -1,0 +1,45 @@
+{
+  "name": "card-game",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@headlessui/react": "^2.2.0",
+    "@types/react-slick": "^0.23.13",
+    "@types/uuid": "^10.0.0",
+    "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
+    "daisyui": "^4.12.14",
+    "flowbite": "^2.5.2",
+    "flowbite-react": "^0.10.2",
+    "framer-motion": "^11.11.17",
+    "postcss": "^8.4.49",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-dropzone": "^14.3.5",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^7.0.1",
+    "react-slick": "^0.30.2",
+    "react-toastify": "^10.0.6",
+    "slick-carousel": "^1.8.1",
+    "tailwindcss": "^3.4.15",
+    "uuid": "^11.0.3",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.3.13",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.7"
+  }
+}

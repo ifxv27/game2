@@ -1,0 +1,392 @@
+.playerCard {
+  position: relative;
+  width: 260px;
+  margin: 0.5rem;
+  aspect-ratio: 3/4;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cardContent {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Rank-based card styles - Clean & Professional */
+.Common {
+  background: linear-gradient(to bottom, #e0e0e0, #f5f5f5);
+}
+
+.Rare {
+  background: linear-gradient(to bottom, #2c5282, #3182ce);
+}
+
+.Epic {
+  background: linear-gradient(to bottom, #44337a, #6b46c1);
+}
+
+.Legendary {
+  background: linear-gradient(to bottom, #744210, #b7791f);
+  box-shadow: 0 0 10px rgba(183, 121, 31, 0.3);
+}
+
+.Secret {
+  background: linear-gradient(to bottom, #1a202c, #2d3748);
+  border: 1px solid #718096;
+}
+
+.Limited {
+  background: linear-gradient(to bottom, #742a2a, #9b2c2c);
+}
+
+.VIP {
+  background: linear-gradient(to bottom, #1a202c, #2d3748);
+  border: 1px solid #d69e2e;
+}
+
+/* Box Effect Background - Subtle & Clean */
+.boxBackground {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-6px, -6px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.Common .boxBackground {
+  background: rgba(224, 224, 224, 0.1);
+}
+
+.Rare .boxBackground {
+  background: rgba(49, 130, 206, 0.1);
+}
+
+.Epic .boxBackground {
+  background: rgba(107, 70, 193, 0.1);
+}
+
+.Legendary .boxBackground {
+  background: rgba(183, 121, 31, 0.1);
+}
+
+.Secret .boxBackground {
+  background: rgba(113, 128, 150, 0.1);
+}
+
+.Limited .boxBackground {
+  background: rgba(155, 44, 44, 0.1);
+}
+
+.VIP .boxBackground {
+  background: rgba(214, 158, 46, 0.1);
+}
+
+/* Box Border - Subtle & Clean */
+.boxBorder {
+  position: absolute;
+  inset: 0;
+  transform: translate(3px, 3px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.Common .boxBorder {
+  border-color: rgba(224, 224, 224, 0.3);
+}
+
+.Rare .boxBorder {
+  border-color: rgba(49, 130, 206, 0.3);
+}
+
+.Epic .boxBorder {
+  border-color: rgba(107, 70, 193, 0.3);
+}
+
+.Legendary .boxBorder {
+  border-color: rgba(183, 121, 31, 0.3);
+}
+
+.Secret .boxBorder {
+  border-color: rgba(113, 128, 150, 0.3);
+}
+
+.Limited .boxBorder {
+  border-color: rgba(155, 44, 44, 0.3);
+}
+
+.VIP .boxBorder {
+  border-color: rgba(214, 158, 46, 0.5);
+}
+
+/* Hover Effects - Smooth & Subtle */
+.playerCard:hover .boxBackground,
+.playerCard:active .boxBackground {
+  transform: translate(-4px, -4px);
+}
+
+.playerCard:hover .boxBorder,
+.playerCard:active .boxBorder {
+  transform: translate(2px, 2px);
+}
+
+.playerCard:hover,
+.playerCard:active {
+  transform: scale(1.02);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 65%;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.playerCard:hover .imageContainer img {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.4) 50%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  padding: 1rem;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.overlayHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
+}
+
+.characterName {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--primary);
+  text-shadow: var(--neon-glow);
+}
+
+.starContainer {
+  display: flex;
+  gap: 2px;
+  margin-top: 0.25rem;
+}
+
+.star {
+  color: var(--primary);
+  filter: drop-shadow(0 0 2px rgba(255, 46, 99, 0.5));
+}
+
+.contentContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.role {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 46, 99, 0.2);
+  color: var(--primary);
+  border: 1px solid rgba(255, 46, 99, 0.3);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  padding: 0.25rem;
+}
+
+.stat {
+  padding: 0.75rem 0.5rem;
+  background: rgba(255, 46, 99, 0.15);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  text-align: center;
+  border: 1px solid rgba(255, 46, 99, 0.25);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.stat:hover {
+  background: rgba(255, 46, 99, 0.2);
+  border-color: rgba(255, 46, 99, 0.35);
+  transform: translateY(-1px);
+}
+
+.stat span {
+  font-weight: 500;
+}
+
+.tasks {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.taskItem {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+}
+
+.controls {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.controlButton {
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 46, 99, 0.3);
+  border-radius: 4px;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controlButton:hover {
+  background: rgba(255, 46, 99, 0.2);
+  color: var(--primary);
+}
+
+.playerGrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.5rem;
+  justify-content: flex-start;
+}
+
+.playerCard::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent-light) 50%, var(--primary) 100%);
+  border-radius: 0.75rem;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.role.admin {
+  color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px rgba(255, 46, 99, 0.2);
+}
+
+.role.mod {
+  color: var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+.role.player {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.controlButton.edit {
+  color: var(--primary);
+}
+
+.controlButton.role {
+  color: var(--accent-light);
+}
+
+.controlButton.delete {
+  color: #ff4444;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .playerCard {
+    width: calc(50% - 1rem);
+    min-width: 220px;
+    margin: 0.25rem;
+  }
+
+  .contentContainer {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .stats {
+    gap: 0.5rem;
+  }
+
+  .stat {
+    padding: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .controls {
+    top: 0.25rem;
+    right: 0.25rem;
+    gap: 0.25rem;
+  }
+
+  .controlButton {
+    padding: 0.375rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .playerCard {
+    width: 100%;
+    max-width: 320px;
+    margin: 0.5rem auto;
+  }
+}

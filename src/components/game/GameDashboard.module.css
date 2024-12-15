@@ -1,0 +1,248 @@
+.playerCard {
+  @apply relative bg-gray-800 rounded-lg shadow-lg overflow-hidden;
+}
+
+.cardContent {
+  @apply relative p-6;
+}
+
+/* Box Effect Background */
+.boxBackground {
+  @apply absolute inset-0 bg-gray-700 bg-opacity-50;
+}
+
+.boxBorder {
+  @apply absolute inset-0 border-2 border-gray-600;
+}
+
+.playerCard:hover .boxBackground,
+.playerCard:active .boxBackground {
+  transform: translate(-2px, -2px);
+}
+
+.playerCard:hover .boxBorder,
+.playerCard:active .boxBorder {
+  transform: translate(4px, 4px);
+}
+
+.playerCard:hover,
+.playerCard:active {
+  transform: scale(1.03);
+}
+
+.imageContainer {
+  @apply relative h-48 w-full overflow-hidden;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.playerCard:hover .imageContainer img {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  @apply absolute inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.4) 50%, 
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  padding: 1rem;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.overlayHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  color: var(--text);
+  text-shadow: 0 0 10px rgba(255, 46, 99, 0.5);
+}
+
+.characterName {
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--primary);
+  text-shadow: var(--neon-glow);
+}
+
+.contentContainer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.button {
+  @apply w-full bg-purple-500/20 hover:bg-purple-500/30 border border-purple-500/30 text-purple-400 
+         py-2 px-4 rounded-lg transition-all flex items-center justify-center gap-2;
+}
+
+.spaceY6 {
+  @apply space-y-6;
+}
+
+/* Gradient Backgrounds */
+.bgGradientToBrFromIndigo900ToIndigo700 {
+  @apply bg-gradient-to-br from-indigo-900 to-indigo-700 p-6 rounded-xl shadow-lg;
+}
+
+.bgGradientToBrFromPurple900ToPurple700 {
+  @apply bg-gradient-to-br from-purple-900 to-purple-700 p-6 rounded-xl shadow-lg;
+}
+
+.bgGradientToBrFromBlue900ToBlue700 {
+  @apply bg-gradient-to-br from-blue-900 to-blue-700 p-6 rounded-xl shadow-lg;
+}
+
+.bgGradientToBrFromYellow900ToYellow700 {
+  @apply bg-gradient-to-br from-yellow-900 to-yellow-700 p-6 rounded-xl shadow-lg;
+}
+
+.bgGradientToBrFromGreen900ToGreen700 {
+  @apply bg-gradient-to-br from-green-900 to-green-700 p-6 rounded-xl shadow-lg;
+}
+
+.bgGradientToBrFromGreen900ToGreen700ColSpan2 {
+  @apply bg-gradient-to-br from-green-900 to-green-700 p-6 rounded-xl shadow-lg col-span-2;
+}
+
+/* Text Styles */
+.text2xlFontBoldMb4 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.text2xlFontBoldMb2 {
+  @apply text-2xl font-bold mb-2;
+}
+
+.textXlFontBoldMb4 {
+  @apply text-xl font-bold mb-4;
+}
+
+.textXlFontBoldMb2 {
+  @apply text-xl font-bold mb-2;
+}
+
+.text3xlFontBold {
+  @apply text-3xl font-bold;
+}
+
+.textGray300TextSm {
+  @apply text-gray-300 text-sm;
+}
+
+.textGray300Mb4 {
+  @apply text-gray-300 mb-4;
+}
+
+/* Layout & Spacing */
+.bgBlackBgOpacity30P4RoundedLg {
+  @apply bg-black bg-opacity-30 p-4 rounded-lg;
+}
+
+.fontSemibold {
+  @apply font-semibold;
+}
+
+.mt2BgGray700RoundedFullH2W48 {
+  @apply mt-2 bg-gray-700 rounded-full h-2 w-48;
+}
+
+.bgIndigo500RoundedFullH2 {
+  @apply bg-indigo-500 rounded-full h-2;
+}
+
+/* Colors */
+.textYellow400 {
+  @apply text-yellow-400;
+}
+
+.textPurple400 {
+  @apply text-purple-400;
+}
+
+.textGreen400 {
+  @apply text-green-400;
+}
+
+.textRed400 {
+  @apply text-red-400;
+}
+
+.textBlue400 {
+  @apply text-blue-400;
+}
+
+/* Profile Elements */
+.w24H24RoundedFullBgBlue500FlexItemsCenterJustifyCenter {
+  @apply w-24 h-24 rounded-full bg-blue-500 flex items-center justify-center;
+}
+
+.w16H16 {
+  @apply w-16 h-16;
+}
+
+.spaceY3 {
+  @apply space-y-3;
+}
+
+.minHScreenBgGray900TextWhiteP6 {
+  @apply min-h-screen bg-gray-900 text-white p-6;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .contentContainer {
+    padding: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .imageContainer {
+    height: 55%;
+  }
+}
+
+@media (max-width: 480px) {
+  .playerCard {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentContainer {
+    padding: 1rem;
+  }
+  
+  .imageContainer {
+    height: 40%;
+  }
+  
+  .button {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+}
