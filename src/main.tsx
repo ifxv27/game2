@@ -1,23 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import './index.css'
-
-const router = createBrowserRouter([
-  {
-    path: "*",
-    element: <App />
-  }
-], {
-  future: {
-    v7_lazyRouteDiscovery: true,
-    v3_singleFetch: true
-  }
-});
+import { BrowserRouter } from 'react-router-dom'
+import { PlayerProvider } from './context/PlayerContext'
+import { GameProvider } from './context/GameContext'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <BrowserRouter>
+      <PlayerProvider>
+        <GameProvider>
+          <App />
+          <ToastContainer position="top-right" theme="dark" />
+        </GameProvider>
+      </PlayerProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
 )

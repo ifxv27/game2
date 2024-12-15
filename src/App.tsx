@@ -1,45 +1,46 @@
-import { Routes, Route, Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
-import Homepage from './components/Homepage';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Nav from './components/1Nav';
+import Home from './pages/Home';
+import PlayerDashboard from './components/game/PlayerDashboard';
 import AdminDashboard from './components/admin/AdminDashboard';
-import GameDashboard from './components/game/GameDashboard';
-import Layout from './components/Layout';
 import { ToastContainer } from 'react-toastify';
-import { useGameStore } from './store/gameStore';
 import 'react-toastify/dist/ReactToastify.css';
+import { usePlayer } from './context/PlayerContext';
 
 function App() {
-  const initializeStore = useGameStore(state => state.initializeStore);
-
-  useEffect(() => {
-    initializeStore();
-  }, [initializeStore]);
+  const { player } = usePlayer();
 
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/admin/*" element={<AdminDashboard />} />
-        <Route path="/play" element={<GameDashboard />} />
-        <Route path="*" element={
-          <>
-            <ToastContainer
-              position="top-right"
-              autoClose={3000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-            />
-            <Outlet />
-          </>
-        } />
-      </Route>
-    </Routes>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+      <Nav />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/play" element={<PlayerDashboard />} />
+        <Route 
+          path="/admin/*" 
+          element={
+            player?.isAdmin ? (
+              <AdminDashboard />
+            ) : (
+              <Navigate to="/" replace />
+            )
+          } 
+        />
+      </Routes>
+    </div>
   );
 }
 

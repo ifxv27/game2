@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import usePlayerStore from '../store/1playerStore';
+import { usePlayer } from '../context/PlayerContext';
 
 const Nav: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { isAuthenticated, username, logout } = usePlayerStore();
-  const isAdmin = username?.toLowerCase() === 'admin' || username?.toLowerCase() === 'mod';
+  const { player, logout } = usePlayer();
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   // Don't show nav on login page
@@ -23,25 +22,14 @@ const Nav: React.FC = () => {
       <div className="px-6 py-2 bg-gray-900/80 backdrop-blur-lg rounded-2xl border border-pink-500/20 shadow-lg">
         <div className="flex items-center space-x-8">
           <Link 
-            to={isAdmin ? '/admin' : '/play'} 
+            to="/"
             className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 font-bold text-xl hover:from-pink-400 hover:to-purple-400 transition-all duration-300"
           >
             WHO
           </Link>
           
-          {isAuthenticated && (
+          {player && (
             <div className="flex items-center space-x-4">
-              {isAdmin && (
-                <Link
-                  to="/admin"
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300
-                    ${location.pathname.startsWith('/admin') 
-                      ? 'text-pink-400 bg-pink-500/10 border border-pink-500/30' 
-                      : 'text-gray-300 hover:text-pink-400 hover:bg-pink-500/10'}`}
-                >
-                  Admin Dashboard
-                </Link>
-              )}
               <Link
                 to="/play"
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300
@@ -49,11 +37,24 @@ const Nav: React.FC = () => {
                     ? 'text-pink-400 bg-pink-500/10 border border-pink-500/30' 
                     : 'text-gray-300 hover:text-pink-400 hover:bg-pink-500/10'}`}
               >
-                Play Game
+                Play
               </Link>
+              
+              {player.isAdmin && (
+                <Link
+                  to="/admin/moves"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300
+                    ${location.pathname.startsWith('/admin') 
+                      ? 'text-pink-400 bg-pink-500/10 border border-pink-500/30' 
+                      : 'text-gray-300 hover:text-pink-400 hover:bg-pink-500/10'}`}
+                >
+                  Manage Moves
+                </Link>
+              )}
+              
               <button
                 onClick={handleLogout}
-                className="text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 px-3 py-2 rounded-md text-sm font-medium transition-all duration-300"
+                className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-pink-400 hover:bg-pink-500/10 transition-all duration-300"
               >
                 Logout
               </button>
